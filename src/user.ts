@@ -16,6 +16,8 @@ export async function getUserIdFromHandle(handle: string): Promise<string> {
     "referrer": `https://www.threads.net/@${handle}`,
     "body": `route_urls[0]=%2F%40${handle}%2Freplies&__a=1&__comet_req=29`,
     "method": "POST",
+    "mode": "cors",
+    "credentials": "include"
   }) as Response).text()).split('for (;;);')[1]!).payload.payloads[`/@${handle}/replies`].result.exports.rootView.props.user_id
 }
 
