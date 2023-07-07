@@ -11,14 +11,11 @@ export async function getUserIdFromHandle(handle: string): Promise<string> {
     "headers": {
       "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
       "content-type": "application/x-www-form-urlencoded",
-      "sec-fetch-site": "same-origin",
+      "sec-fetch-site": "none",
     },
     "referrer": `https://www.threads.net/@${handle}`,
-    "referrerPolicy": "origin-when-cross-origin",
     "body": `route_urls[0]=%2F%40${handle}%2Freplies&__a=1&__comet_req=29`,
     "method": "POST",
-    "mode": "cors",
-    "credentials": "include"
   }) as Response).text()).split('for (;;);')[1]!).payload.payloads[`/@${handle}/replies`].result.exports.rootView.props.user_id
 }
 
